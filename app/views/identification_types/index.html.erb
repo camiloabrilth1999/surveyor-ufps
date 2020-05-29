@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Identification Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Summary description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @identification_types.each do |identification_type| %>
+      <tr>
+        <td><%= identification_type.description %></td>
+        <td><%= identification_type.summary_description %></td>
+        <td><%= link_to 'Show', identification_type %></td>
+        <td><%= link_to 'Edit', edit_identification_type_path(identification_type) %></td>
+        <td><%= link_to 'Destroy', identification_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Identification Type', new_identification_type_path %>

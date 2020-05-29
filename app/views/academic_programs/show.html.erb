@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @academic_program.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @academic_program.code %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @academic_program.email %>
+</p>
+
+<%= link_to 'Edit', edit_academic_program_path(@academic_program) %> |
+<%= link_to 'Back', academic_programs_path %>
