@@ -20,11 +20,16 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'home#index', as: :authenticated_root
+      root 'users/profile#show', as: :authenticated_root
     end
 
     unauthenticated do
       root 'users/sessions#new', as: :unauthenticated_root
     end
+  end
+
+
+  namespace :users, path: "/u" do
+    get '/profile', to: 'profile#show', as: :profile
   end
 end

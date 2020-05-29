@@ -1,9 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  rolify
   include UniversalIdentifiable
-  belongs_to :academic_program
-  belongs_to :academic_departament
+  belongs_to :academic_program, optional: true
+  belongs_to :academic_departament, optional: true
   belongs_to :identification_type
 
   devise :database_authenticatable, :registerable,

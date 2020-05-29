@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Users::ProfileController < ApplicationController
   before_action :authenticate_user!
   before_action :load_user, except: [:index]
 
@@ -12,6 +12,6 @@ class UsersController < ApplicationController
   private
 
   def load_user
-    @user = User.find_by(uuid: params[:uuid])
+    @user = current_user
   end
 end
