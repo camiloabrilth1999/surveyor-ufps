@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @identification_type.description %>
+</p>
+
+<p>
+  <strong>Summary description:</strong>
+  <%= @identification_type.summary_description %>
+</p>
+
+<%= link_to 'Edit', edit_identification_type_path(@identification_type) %> |
+<%= link_to 'Back', identification_types_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @academic_departament.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @academic_departament.code %>
+</p>
+
+<%= link_to 'Edit', edit_academic_departament_path(@academic_departament) %> |
+<%= link_to 'Back', academic_departaments_path %>

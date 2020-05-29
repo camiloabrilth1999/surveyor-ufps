@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # resources :identification_types
+  # resources :academic_programs
+  # resources :academic_departaments
+  # resources :faculties
   devise_for :users,
     path: '',
     path_names: {
