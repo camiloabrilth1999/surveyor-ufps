@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # resources :identification_types
-  # resources :academic_programs
+  resources :academic_programs
   # resources :academic_departaments
-  # resources :faculties
+  resources :faculties
   devise_for :users, :skip => [:registrations],
     path: '',
     path_names: {

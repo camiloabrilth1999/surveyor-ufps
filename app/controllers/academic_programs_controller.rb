@@ -69,6 +69,6 @@ class AcademicProgramsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def academic_program_params
-      params.require(:academic_program).permit(:name, :code, :email)
+      params.require(:academic_program).permit(:name, :code, :email, :faculty_id)
     end
 end
