@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_051519) do
+ActiveRecord::Schema.define(version: 2020_06_03_111402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,28 @@ ActiveRecord::Schema.define(version: 2020_05_29_051519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "code"
+    t.string "full_name"
+    t.string "document_number"
+    t.string "semester"
+    t.float "average"
+    t.bigint "identification_type_id"
+    t.bigint "academic_program_id"
+    t.index ["academic_program_id"], name: "index_students_on_academic_program_id"
+    t.index ["identification_type_id"], name: "index_students_on_identification_type_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,19 +79,27 @@ ActiveRecord::Schema.define(version: 2020_05_29_051519) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "uuid"
-    t.bigint "academic_departament_id"
-    t.bigint "academic_program_id"
-    t.bigint "identification_type_id"
     t.string "name"
     t.string "lastname"
     t.string "code"
     t.string "document_number"
     t.string "contact_number"
+    t.bigint "identification_type_id"
+    t.bigint "academic_departament_id"
+    t.bigint "academic_program_id"
     t.index ["academic_departament_id"], name: "index_users_on_academic_departament_id"
     t.index ["academic_program_id"], name: "index_users_on_academic_program_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["identification_type_id"], name: "index_users_on_identification_type_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
 end

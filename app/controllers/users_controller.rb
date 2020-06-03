@@ -8,6 +8,6 @@ class UsersController < ApplicationController
   private
 
   def load_user
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(uuid: params[:uuid])
   end
 end

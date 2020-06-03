@@ -12,5 +12,9 @@ class CreateAcademicPrograms < ActiveRecord::Migration[6.0]
     change_table :users do |t|
       t.references :academic_program
     end
+
+    change_table :students do |t|
+      t.references :academic_program
+    end
   end
 end

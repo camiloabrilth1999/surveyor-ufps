@@ -10,5 +10,9 @@ class CreateIdentificationTypes < ActiveRecord::Migration[6.0]
     change_table :users do |t|
       t.references :identification_type
     end
+
+    change_table :students do |t|
+      t.references :identification_type
+    end
   end
 end

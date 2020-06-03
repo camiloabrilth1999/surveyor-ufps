@@ -9,6 +9,36 @@
   </div>
 
   <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code, autofocus: true, autocomplete: "code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :identification_type_id %><br />
+    <%= f.select "identification_type_id", options_from_collection_for_select(IdentificationType.all, "id", "description") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :document_number %><br />
+    <%= f.text_field :document_number, autofocus: true, autocomplete: "document_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number, autofocus: true, autocomplete: "contact_number" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
