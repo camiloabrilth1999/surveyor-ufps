@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # resources :academic_programs
   # resources :academic_departaments
   # resources :faculties
-  devise_for :users,
+  devise_for :users, :skip => [:registrations],
     path: '',
     path_names: {
       sign_in: 'signin',
@@ -20,11 +20,16 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'users#show', as: :authenticated_root
+      root 'users/profile#show', as: :authenticated_root
     end
 
     unauthenticated do
       root 'users/sessions#new', as: :unauthenticated_root
     end
+  end
+
+  namespace :users, path: "/u" do
+    get 'profile', to: 'profile#show'
+    get 'new-user', to: 'registrations#new'
   end
 end

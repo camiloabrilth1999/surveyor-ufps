@@ -1,31 +1,38 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code, autofocus: true, autocomplete: "code" %>
+<div class="login-box login-box-custom">
+  <div class="login-logo-title">
+    <p href="#"><b>Surveyor </b>UFPS</p>
   </div>
 
-  <div class="field">
-    <%= f.label :document_number %><br />
-    <%= f.text_field :document_number, autofocus: true, autocomplete: "document_number" %>
-  </div>
+  <div class="login-box-body">
+    <p class="login-box-msg">Ingresa tus datos para iniciar sesión</p>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="form-group form-icons">
+        <span class="fas fa-user"></span>
+        <%= f.text_field :code, autofocus: true, autocomplete: "code", class: "form-control", placeholder: "Codigo" %>
+      </div>
+
+      <div class="form-group form-icons">
+        <span class="fas fa-id-card"></span>
+        <%= f.text_field :document_number, autofocus: true, autocomplete: "document_number", class: "form-control", placeholder: "Documento" %>
+      </div>
+
+      <div class="form-group form-icons">
+        <span class="fas fa-lock"></span>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Contraseña" %>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <%= f.submit "Iniciar Sesión", class: "btn btn-danger btn-custom-login" %>
+      </div>
+    <% end %>
+
+    <div class="d-flex justify-content-center links-custom">
+      <%= render "users/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+
+</div>
