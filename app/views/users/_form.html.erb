@@ -2,46 +2,46 @@
   <% if user.errors.any? %>
     <%= render 'shared/error_messages', resource: user%>
   <% end %>
-  
+
   <% if current_user.has_role? :director_de_comite %>
   <div class="field">
-    <%= form.label :code %>
+    <%= form.label :code, "Codigo" %>
     <%= form.text_field :code %>
   </div>
   <% end %>
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label :email, "Correo electronico" %>
     <%= form.email_field :email %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, "Nombre(s)" %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :lastname %>
+    <%= form.label :lastname, "Apellido(s)" %>
     <%= form.text_field :lastname %>
   </div>
 
   <div class="field">
-    <%= form.label :identification_type_id %>
+    <%= form.label :identification_type_id, "Tipo de identificacion" %>
     <%= form.select "identification_type_id", options_from_collection_for_select(IdentificationType.all, "id", "description") %>
   </div>
 
   <div class="field">
-    <%= form.label :document_number %>
+    <%= form.label :document_number, "Numero de documento" %>
     <%= form.text_field :document_number %>
   </div>
 
   <div class="field">
-    <%= form.label :contact_number %>
+    <%= form.label :contact_number, "Numero de contacto" %>
     <%= form.text_field :contact_number %>
   </div>
 
   <% if current_user.has_role? :director_de_comite %>
   <div class="field">
-    <%= form.label :academic_program_id %>
+    <%= form.label :academic_program_id, "Programa academico" %>
     <%= form.select "academic_program_id", options_from_collection_for_select(AcademicProgram.all, "id", "name") %>
   </div>
   <% end %>

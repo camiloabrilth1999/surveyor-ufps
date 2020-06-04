@@ -1,16 +1,51 @@
 <p>
-  <strong>Name:</strong>
+  <strong>Codigo:</strong>
+  <%= @user.code %>
+</p>
+
+<p>
+  <strong>Correo electronico:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Nombre(s):</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Code:</strong>
-  <%= @user.code %>
+  <strong>Apellido(s):</strong>
+  <%= @user.lastname %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<p>
+  <strong>Tipo de documento:</strong>
+  <%= @user.identification_type.description %>
+</p>
+
+<p>
+  <strong>Numero de documento:</strong>
+  <%= @user.document_number %>
+</p>
+
+<p>
+  <strong>Numero de contacto:</strong>
+  <%= @user.contact_number %>
+</p>
+
+<p>
+  <strong>Programa academico:</strong>
+  <%= @user.academic_program.name %>
+</p>
+
+<p>
+  <strong>Facultad:</strong>
+  <%= @user.academic_program.faculty.name %>
+</p>
+
+<%= link_to 'Editar usuario', edit_user_path(@user) %> |
 <% if current_user.has_role? :director_de_comite%>
-  <%= link_to 'Back', users_path %>
+  <%= link_to 'Atras', users_path %>
 <% else %>
-<%= link_to 'Back', authenticated_root_path %>
+<%= link_to 'Atras', authenticated_root_path %>
 <% end %>
