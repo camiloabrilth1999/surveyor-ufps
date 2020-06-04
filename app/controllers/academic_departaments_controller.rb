@@ -1,4 +1,5 @@
 class AcademicDepartamentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_academic_departament, only: [:show, :edit, :update, :destroy]
 
   # GET /academic_departaments

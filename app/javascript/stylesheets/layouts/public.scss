@@ -1,0 +1,83 @@
+.bg-body-login {
+  background-image: url("https://divisist2.ufps.edu.co/assets/img/bg/19.jpg");
+  background-color: #cccccc;
+  ackground-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-box-custom {
+  background-color: white;
+}
+
+.login-logo-title {
+  background-color: #dd4b39;
+  font-weight: 300;
+  margin-bottom: 0.9rem;
+  text-align: center;
+  color: white;
+  p{
+    font-size: 2.1rem;
+    padding: 5%;
+  }
+}
+
+.btn-custom-login {
+  background-color: #dd4b39 !important;
+  width: 90%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.links-custom {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.alert-warning-custom{
+  color: #856404;
+  background: #fff3cd;
+  border-color: #edb100;
+}
+
+.alert-success-custom{
+  color: #155724;
+  background: #d4edda;
+  border-color: #23923d;
+}
+
+.form-icons {
+  position: relative;
+  width: 90%;
+  margin: auto auto 5%;
+
+  input {
+    text-indent: 30px;
+  }
+
+  .fa-id-card,
+  .fa-lock,
+  .fa-user {
+    position: absolute;
+    top: 27.5%;
+    left: 5%;
+    font-size: 15px;
+    color: grey;
+  }
+
+  .fa-comments {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 15px;
+    color: grey;
+  }
+
+  .fa-sign-in {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 18px;
+    color: white;
+  }
+}

@@ -1,0 +1,66 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Informacion personal</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Datos personales</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <tbody>
+
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Codigo</td>
+                        <td><%= current_user.code %></td>
+                      </tr>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Tipo documento</td>
+                        <td><%= current_user.identification_type.summary_description %></td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Documento</td>
+                        <td><%= current_user.document_number %></td>
+                      </tr>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Nombre(s)</td>
+                        <td><%= current_user.name %></td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Apellido(s)</td>
+                        <td><%= current_user.lastname %></td>
+                      </tr>
+
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Telefono</td>
+                        <td><%= current_user.contact_number %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

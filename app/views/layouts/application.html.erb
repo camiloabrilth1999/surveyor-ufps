@@ -10,8 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render 'shared/alert' %>
-    <%= yield %>
+  <body class="sidebar-mini">
+    <div class="wrapper">
+      <%= render partial: "shared/header" %>
+      <%= render partial: "shared/sidebar" %>
+      <div class="content-wrapper">
+        <%= render 'shared/alert' %>
+        <%= yield %>
+      </div>
+      <%= render partial: "shared/footer" %>
+    </div>
   </body>
 </html>

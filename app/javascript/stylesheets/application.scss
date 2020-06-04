@@ -1,1 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&lang=en");
+@import '@fortawesome/fontawesome-free';
+@import "bootstrap";
+@import "admin-lte/dist/css/adminlte";
+@import "./layouts/header";
+@import "./layouts/public";
+@import "./models/faculty";
