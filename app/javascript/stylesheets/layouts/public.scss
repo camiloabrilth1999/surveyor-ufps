@@ -22,8 +22,6 @@
   }
 }
 
-
-
 .btn-custom-login {
   background-color: #dd4b39 !important;
   width: 90%;
@@ -34,6 +32,18 @@
 .links-custom {
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+.alert-warning-custom{
+  color: #856404;
+  background: #fff3cd;
+  border-color: #edb100;
+}
+
+.alert-success-custom{
+  color: #155724;
+  background: #d4edda;
+  border-color: #23923d;
 }
 
 .form-icons {

@@ -1,0 +1,54 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <%= render 'shared/error_messages', resource: user%>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :identification_type_id %>
+    <%= form.select "identification_type_id", options_from_collection_for_select(IdentificationType.all, "id", "description") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :document_number %>
+    <%= form.text_field :document_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_number %>
+    <%= form.text_field :contact_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :academic_departament_id %>
+    <%= form.select "academic_departament_id", options_from_collection_for_select(AcademicDepartament.all, "id", "name") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :academic_program_id %>
+    <%= form.select "academic_program_id", options_from_collection_for_select(AcademicProgram.all, "id", "name") %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear usuario", class: "btn btn-success btn-index-create" %>
+  </div>
+<% end %>

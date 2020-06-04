@@ -1,4 +1,4 @@
-<h1>Facultades</h1>
+<h1>Usuarios</h1>
 <div class="table-responsive">
   <table class="table table-bordered">
     <thead>
@@ -9,22 +9,22 @@
       </tr>
     </thead>
     <tbody>
-      <% @faculties.each do |faculty| %>
+      <% @users.each do |user| %>
         <tr>
-          <td><%= faculty.name %></td>
-          <td><%= faculty.code %></td>
+          <td><%= user.name %></td>
+          <td><%= user.code %></td>
           <td>
-            <%= link_to(faculty_path(faculty.id), class: "") do %>
+            <%= link_to(user_path(user.uuid), class: "") do %>
             <i class="fas fa-eye"></i>
             <% end %>
           </td>
           <td>
-            <%= link_to(edit_faculty_path(faculty), class: "") do %>
+            <%= link_to(edit_user_path(user), class: "") do %>
             <i class="fas fa-edit"></i>
             <% end %>
           </td>
           <td>
-            <%= link_to(faculty_path(faculty.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "") do %>
+            <%= link_to(user_path(user.uuid), method: :delete, data: { confirm: 'Are you sure?' }, class: "") do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
           </td>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'Crear nueva facultad', new_faculty_path, class: "btn btn-primary btn-index-create", role: "button" %>
+<%= link_to 'Crear nuevo director de programa', new_user_path, class: "btn btn-primary btn-index-create", role: "button" %>

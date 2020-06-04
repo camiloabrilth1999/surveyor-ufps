@@ -1,4 +1,5 @@
 class IdentificationTypesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_identification_type, only: [:show, :edit, :update, :destroy]
 
   # GET /identification_types

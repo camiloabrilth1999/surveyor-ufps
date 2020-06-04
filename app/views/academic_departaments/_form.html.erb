@@ -1,14 +1,6 @@
 <%= form_with(model: academic_departament, local: true) do |form| %>
   <% if academic_departament.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(academic_departament.errors.count, "error") %> prohibited this academic_departament from being saved:</h2>
-
-      <ul>
-        <% academic_departament.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render 'shared/error_messages', resource: academic_departament%>
   <% end %>
 
   <div class="field">

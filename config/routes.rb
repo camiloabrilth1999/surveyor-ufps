@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :academic_programs
   # resources :academic_departaments
   resources :faculties
+  resources :users, param: :uuid
   devise_for :users, :skip => [:registrations],
     path: '',
     path_names: {
