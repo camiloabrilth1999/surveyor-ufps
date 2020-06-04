@@ -39,13 +39,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :academic_departament_id %>
-    <%= form.select "academic_departament_id", options_from_collection_for_select(AcademicDepartament.all, "id", "name") %>
+    <%= form.label :academic_program_id %>
+    <%= form.select "academic_program_id", options_from_collection_for_select(AcademicProgram.all, "id", "name") %>
   </div>
 
   <div class="field">
-    <%= form.label :academic_program_id %>
-    <%= form.select "academic_program_id", options_from_collection_for_select(AcademicProgram.all, "id", "name") %>
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
