@@ -18,11 +18,32 @@
 <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <% if current_user.has_role? :director_de_comite%>
         <li class="nav-item has-treeview menu-open">
           <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-user-friends"></i>
+            <p>
+              Informacion personal
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <%= link_to(users_profile_path, class: "nav-link") do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Datos personales</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to(edit_user_path(current_user), class: "nav-link") do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Editar datos personales</p>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <% if current_user.has_role? :director_de_comite%>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
             <i class="nav-icon fas fa-building"></i>
             <p>
               Infraestructura fisica

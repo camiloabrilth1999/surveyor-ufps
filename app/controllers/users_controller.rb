@@ -4,20 +4,28 @@ class UsersController < ApplicationController
 
   def index
     @users = User.with_role :director_de_programa
+    authorize @users
   end
 
   def show
+    authorize @user
   end
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
   def create
     @user = User.new(user_params)
+    @user.update(password: "#{@user.document_number}"+"UFPS"+"#{@user.code}",
+      password_confirmation: "#{@user.document_number}"+"UFPS"+"#{@user.code}")
+    @user.add_role :director_de_programa
+    authorize @user
 
     respond_to do |format|
       if @user.save
@@ -32,6 +40,7 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
+      authorize @user
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -43,9 +52,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to faculties_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

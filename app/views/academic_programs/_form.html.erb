@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :faculty_id %><br />
+    <%= form.label :faculty_id %>
     <%= form.select "faculty_id", options_from_collection_for_select(Faculty.all, "id", "name") %>
   </div>
 
@@ -24,6 +24,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Enviar formulario", class: "btn btn-success btn-index-create" %>
   </div>
 <% end %>
