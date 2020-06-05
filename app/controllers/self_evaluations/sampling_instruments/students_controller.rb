@@ -1,5 +1,7 @@
 class SelfEvaluations::SamplingInstruments::StudentsController < ApplicationController
   def index
+    @students = Student.where(semester: params[:semesters], academic_program_id: current_user.academic_program_id)
+    authorize @students
   end
 
   def import
@@ -8,7 +10,8 @@ class SelfEvaluations::SamplingInstruments::StudentsController < ApplicationCont
   end
 
   def index_semester
-    @students = Student.where(semester: params[:semesters])
+    @students = Student.where(semester: params[:semesters], academic_program_id: current_user.academic_program_id)
+    authorize @students
   end
 
   def index_semester_post
