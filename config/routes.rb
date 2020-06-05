@@ -33,4 +33,15 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
     get 'new-user', to: 'registrations#new'
   end
+
+  namespace :self_evaluations, path: "/acreditacion" do
+    get 'muestreos', to: 'sampling_instruments#index', as: "sampling_instruments"
+    namespace :sampling_instruments, path: "/muestreos" do
+      resources :students, path: 'estudiantes', param: :code, only: [:index] do
+        collection { post :import }
+        collection { get '/:semesters', to: 'students#index_semester', as: "index_semester_other"}
+        collection { post :index_semester_post }
+      end
+    end
+  end
 end

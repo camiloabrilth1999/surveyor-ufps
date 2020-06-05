@@ -1,0 +1,87 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Autoevaluacion</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Muestreo de instrumentos</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h1>Estudiantes</h1>
+                  <% if @students.count > 0 %>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Codigo</th>
+                          <th>Nombre</th>
+                          <th>Tipo de documento</th>
+                          <th>Numero de documento</th>
+                          <th>Semestre</th>
+                          <th>Promedio</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @students.each do |student| %>
+                          <tr>
+                            <td><%= student.code %></td>
+                            <td><%= student.full_name %></td>
+                            <td><%= student.identification_type.summary_description %></td>
+                            <td><%= student.document_number %></td>
+                            <td><%= student.semester %></td>
+                            <td><%= student.average %></td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <% else %>
+                    <h3>No hay alumnos registrados en este semestre</h3>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <%= link_to(request.referer, class: "btn btn-custom-2 float-right") do %>
+                    Atras
+                  <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

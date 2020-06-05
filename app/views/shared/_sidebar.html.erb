@@ -68,7 +68,7 @@
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-user-friends"></i>
+            <i class="nav-icon fas fa-people-carry"></i>
             <p>
               Recurso humano
               <i class="right fas fa-angle-left"></i>
@@ -94,18 +94,22 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
+            <% if current_user.has_role? :director_de_comite%>
             <li class="nav-item">
-              <a href="./index.html" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Encuestas</p>
               </a>
             </li>
+            <% end %>
+            <% if current_user.has_role? :director_de_programa%>
             <li class="nav-item">
-              <a href="./index2.html" class="nav-link">
+              <%= link_to(self_evaluations_sampling_instruments_path, class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Muestreo de instrumentos</p>
-              </a>
+              <% end %>
             </li>
+            <% end %>
           </ul>
         </li>
       </ul>
