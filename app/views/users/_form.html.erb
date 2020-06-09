@@ -1,52 +1,64 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <%= render 'shared/error_messages', resource: user%>
+<div class="card-text">
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <%= render 'shared/error_messages', resource: user%>
+    <% end %>
+
+    <% if current_user.has_role? :director_de_comite %>
+    <div class="form-group">
+      <%= form.label :code, "Codigo" %>
+      <%= form.text_field :code, class: "form-control" %>
+    </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :email, "Correo electronico" %>
+      <%= form.email_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :name, "Nombre(s)" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :lastname, "Apellido(s)" %>
+      <%= form.text_field :lastname, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :identification_type_id, "Tipo de identificacion" %>
+      <%= form.select(:identification_type_id, IdentificationType.all.collect { |i| [i.description, i.id ] }, {}, { id: "user_identification_type_id", class: "form-control" }) %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :document_number, "Numero de documento" %>
+      <%= form.text_field :document_number, class: "form-control", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :contact_number, "Numero de contacto" %>
+      <%= form.text_field :contact_number, class: "form-control" %>
+    </div>
+
+    <% if current_user.has_role? :director_de_comite %>
+    <div class="form-group">
+      <%= form.label :academic_program_id, "Programa academico" %>
+      <%= form.select(:academic_program_id, AcademicProgram.all.collect { |a| [a.name, a.id ] }, {}, { id: "user_academic_program_id", class: "form-control" }) %>
+    </div>
+    <% end %>
+
+    <div class="actions">
+      <% if current_user.has_role? :director_de_comite %>
+        <%= link_to(request.referrer, class: "btn btn-custom-2 float-right") do %>
+          Volver atras
+        <% end %>
+      <% else %>
+        <%= link_to(users_profile_path, class: "btn btn-custom-2 float-right") do %>
+          Volver al perfil
+        <% end %>
+      <% end %>
+      <%= form.submit "Enviar formulario", class: "btn btn-success btn-index-create float-right mr-2" %>
+    </div>
   <% end %>
 
-  <% if current_user.has_role? :director_de_comite %>
-  <div class="field">
-    <%= form.label :code, "Codigo" %>
-    <%= form.text_field :code %>
-  </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :email, "Correo electronico" %>
-    <%= form.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name, "Nombre(s)" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lastname, "Apellido(s)" %>
-    <%= form.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :identification_type_id, "Tipo de identificacion" %>
-    <%= form.select "identification_type_id", options_from_collection_for_select(IdentificationType.all, "id", "description") %>
-  </div>
-
-  <div class="field">
-    <%= form.label :document_number, "Numero de documento" %>
-    <%= form.text_field :document_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :contact_number, "Numero de contacto" %>
-    <%= form.text_field :contact_number %>
-  </div>
-
-  <% if current_user.has_role? :director_de_comite %>
-  <div class="field">
-    <%= form.label :academic_program_id, "Programa academico" %>
-    <%= form.select "academic_program_id", options_from_collection_for_select(AcademicProgram.all, "id", "name") %>
-  </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit "Enviar formulario", class: "btn btn-success btn-index-create" %>
-  </div>
-<% end %>
+</div>

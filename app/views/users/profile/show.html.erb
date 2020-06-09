@@ -26,7 +26,6 @@
                 <div class="col-sm-12">
                   <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                     <tbody>
-
                       <tr role="row" class="odd">
                         <td class="sorting_1">Codigo</td>
                         <td><%= current_user.code %></td>
@@ -52,6 +51,23 @@
                         <td class="sorting_1">Telefono</td>
                         <td><%= current_user.contact_number %></td>
                       </tr>
+
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Telefono</td>
+                        <td><%= current_user.contact_number %></td>
+                      </tr>
+
+                      <% if current_user.academic_program != nil %>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Programa academico</td>
+                        <td><%= current_user.academic_program.name %></td>
+                      </tr>
+
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Facultad</td>
+                        <td><%= current_user.academic_program.faculty.name %></td>
+                      </tr>
+                      <% end %>
                     </tbody>
                   </table>
                 </div>

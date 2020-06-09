@@ -1,51 +1,95 @@
-<p>
-  <strong>Codigo:</strong>
-  <%= @user.code %>
-</p>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Ver datos personales</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Verificacion de datos</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <tbody>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Codigo</td>
+                        <td><%= @user.code %></td>
+                      </tr>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Tipo documento</td>
+                        <td><%= @user.identification_type.summary_description %></td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Documento</td>
+                        <td><%= @user.document_number %></td>
+                      </tr>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Nombre(s)</td>
+                        <td><%= @user.name %></td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Apellido(s)</td>
+                        <td><%= @user.lastname %></td>
+                      </tr>
 
-<p>
-  <strong>Correo electronico:</strong>
-  <%= @user.email %>
-</p>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Telefono</td>
+                        <td><%= @user.contact_number %></td>
+                      </tr>
 
-<p>
-  <strong>Nombre(s):</strong>
-  <%= @user.name %>
-</p>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Telefono</td>
+                        <td><%= @user.contact_number %></td>
+                      </tr>
 
-<p>
-  <strong>Apellido(s):</strong>
-  <%= @user.lastname %>
-</p>
+                      <% if @user.academic_program != nil %>
+                      <tr role="row" class="even">
+                        <td class="sorting_1">Programa academico</td>
+                        <td><%= @user.academic_program.name %></td>
+                      </tr>
 
-<p>
-  <strong>Tipo de documento:</strong>
-  <%= @user.identification_type.description %>
-</p>
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">Facultad</td>
+                        <td><%= @user.academic_program.faculty.name %></td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <% if current_user.has_role? :director_de_comite%>
+                    <%= link_to(users_path, class: "btn btn-custom-2 float-right ") do %>
+                      Volver atras
+                    <% end %>
+                  <% else %>
+                    <%= link_to(authenticated_root_path, class: "btn btn-custom-2 float-right ") do %>
+                      Volver al perfil
+                    <% end %>
+                  <% end %>
 
-<p>
-  <strong>Numero de documento:</strong>
-  <%= @user.document_number %>
-</p>
-
-<p>
-  <strong>Numero de contacto:</strong>
-  <%= @user.contact_number %>
-</p>
-
-<p>
-  <strong>Programa academico:</strong>
-  <%= @user.academic_program.name %>
-</p>
-
-<p>
-  <strong>Facultad:</strong>
-  <%= @user.academic_program.faculty.name %>
-</p>
-
-<%= link_to 'Editar usuario', edit_user_path(@user) %> |
-<% if current_user.has_role? :director_de_comite%>
-  <%= link_to 'Atras', users_path %>
-<% else %>
-<%= link_to 'Atras', authenticated_root_path %>
-<% end %>
+                  <%= link_to(edit_user_path(@user), class: "btn btn-success float-right mr-2") do %>
+                    Editar usuario
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
