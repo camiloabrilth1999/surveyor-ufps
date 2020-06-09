@@ -1,34 +1,5 @@
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>Registrar un nuevo programa academico</h1>
-      </div>
-    </div>
-  </div>
-</div>
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-              <div class="row">
-                <div class="col-sm-12 col-md-6"></div>
-                <div class="col-sm-12 col-md-6"></div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <%= render 'form', academic_program: @academic_program %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<h1>Nuevo programa academico</h1>
+
+<%= render 'form', academic_program: @academic_program %>
+
+<%= link_to 'Atras', academic_programs_path %>
