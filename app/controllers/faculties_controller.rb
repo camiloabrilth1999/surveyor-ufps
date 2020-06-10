@@ -34,7 +34,7 @@ class FacultiesController < ApplicationController
 
     respond_to do |format|
       if @faculty.save
-        format.html { redirect_to @faculty, notice: 'Faculty was successfully created.' }
+        format.html { redirect_to @faculty, notice: 'La facultad ha sido creada correctamente.' }
         format.json { render :show, status: :created, location: @faculty }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class FacultiesController < ApplicationController
     respond_to do |format|
       authorize @faculty
       if @faculty.update(faculty_params)
-        format.html { redirect_to @faculty, notice: 'Faculty was successfully updated.' }
+        format.html { redirect_to @faculty, notice: 'Se ha actualizado la facultad correctamente.' }
         format.json { render :show, status: :ok, location: @faculty }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class FacultiesController < ApplicationController
     authorize @faculty
     @faculty.destroy
     respond_to do |format|
-      format.html { redirect_to faculties_url, notice: 'Faculty was successfully destroyed.' }
+      format.html { redirect_to faculties_url, notice: 'Se ha eliminado la facultad correctamente.' }
       format.json { head :no_content }
     end
   end

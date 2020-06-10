@@ -17,7 +17,9 @@
       <%= render partial: "shared/header" %>
       <%= render partial: "shared/sidebar" %>
       <div class="content-wrapper">
-        <%= render 'shared/alert' %>
+        <div class="pt-4">
+          <%= render 'shared/alert' %>
+        </div>
         <%= yield %>
       </div>
       <%= render partial: "shared/footer" %>

@@ -1,10 +1,12 @@
 <% if resource.errors.any? %>
-<div class="alert alert-warning" role="alert">
-  <h4 class="alert-heading"><%= pluralize(resource.errors.count, "error") %> prohibited this <%"#{resource.class.model_name.human.downcase}"%> from being saved:</h4>
-  <ul>
-    <% resource.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+  <div class="alert alert-warning alert-dismissible text-justify" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+    <i class="fa fa-exclamation-triangle"></i>
+    Ha(n) ocurrido <%= pluralize(resource.errors.count, "error") %>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
