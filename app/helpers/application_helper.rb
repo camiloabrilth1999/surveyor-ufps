@@ -1,14 +1,14 @@
 module ApplicationHelper
   def flash_alert(msg_type, msg)
     type = (msg_type == "notice" ? "success" : "warning")
-    msg_custom = (msg_type == "notice" ? "Todo ha salido correctamente" : "Advertencia")
+    icon_custom = (msg_type == "notice" ? "check-circle" : "exclamation-triangle")
 
-    content_tag(:div, "", class: "alert alert-#{type}-custom", role: "alert") do
+    content_tag(:div, "", class: "alert alert-#{type} alert-dismissible text-justify", role: "alert") do
       concat(
-        content_tag(:h4, "#{msg_custom}", class: "alert-heading")
+        "<a href='#' class='close' data-dismiss='alert' aria-label='close' title='close'>×</a>".html_safe
       )
       concat(
-        content_tag(:p, msg)
+        "<i class='fas fa-#{icon_custom} mr-2'></i> #{msg}".html_safe
       )
     end
   end

@@ -34,7 +34,7 @@ class AcademicProgramsController < ApplicationController
 
     respond_to do |format|
       if @academic_program.save
-        format.html { redirect_to @academic_program, notice: 'Academic program was successfully created.' }
+        format.html { redirect_to @academic_program, notice: 'El programa academico ha sido creado correctamente.' }
         format.json { render :show, status: :created, location: @academic_program }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class AcademicProgramsController < ApplicationController
     respond_to do |format|
       authorize @academic_program
       if @academic_program.update(academic_program_params)
-        format.html { redirect_to @academic_program, notice: 'Academic program was successfully updated.' }
+        format.html { redirect_to @academic_program, notice: 'Se ha actualizado el programa academico correctamente.' }
         format.json { render :show, status: :ok, location: @academic_program }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class AcademicProgramsController < ApplicationController
     authorize @academic_program
     @academic_program.destroy
     respond_to do |format|
-      format.html { redirect_to academic_programs_url, notice: 'Academic program was successfully destroyed.' }
+      format.html { redirect_to academic_programs_url, notice: 'Se ha eliminado el programa academico correctamente.' }
       format.json { head :no_content }
     end
   end
