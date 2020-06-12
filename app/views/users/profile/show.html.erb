@@ -48,13 +48,18 @@
                         <td><%= current_user.contact_number %></td>
                       </tr>
 
-                      <% if current_user.academic_program != nil %>
                       <tr role="row" class="odd">
+                        <td class="sorting_1">Correo electronico</td>
+                        <td><%= current_user.email %></td>
+                      </tr>
+
+                      <% if current_user.academic_program != nil %>
+                      <tr role="row" class="even">
                         <td class="sorting_1">Programa academico</td>
                         <td><%= current_user.academic_program.name %></td>
                       </tr>
 
-                      <tr role="row" class="even">
+                      <tr role="row" class="odd">
                         <td class="sorting_1">Facultad</td>
                         <td><%= current_user.academic_program.faculty.name %></td>
                       </tr>
