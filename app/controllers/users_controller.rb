@@ -22,9 +22,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.update(password: "#{@user.document_number}"+"UFPS"+"#{@user.code}",
-      password_confirmation: "#{@user.document_number}"+"UFPS"+"#{@user.code}")
-    @user.add_role :director_de_programa
+    user_modify
     authorize @user
 
     respond_to do |format|
@@ -68,5 +66,11 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :lastname, :code, :email, :document_number, :contact_number,
         :identification_type_id, :academic_departament_id, :academic_program_id, :password, :password_confirmation)
+    end
+
+    def user_modify
+      @user.update(password: "#{@user.document_number}"+"UFPS"+"#{@user.code}",
+        password_confirmation: "#{@user.document_number}"+"UFPS"+"#{@user.code}")
+      @user.add_role :director_de_programa
     end
 end
