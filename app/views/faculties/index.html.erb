@@ -24,6 +24,7 @@
               </div>
               <div class="row">
                 <div class="col-sm-12">
+                  <% if !@faculties.count.zero? %>
                   <div class="table-responsive">
                     <table class="table table-bordered">
                       <thead>
@@ -59,6 +60,10 @@
                     </table>
                     <%= link_to 'Crear nueva facultad', new_faculty_path, class: "btn btn-success btn-index-create float-right", role: "button" %>
                   </div>
+                  <% else %>
+                  <h2>No existen facultades en estos momentos, por favor, introduce los datos de la facultad y añadela</h2>
+                  <%= link_to 'Crear nueva facultad', new_faculty_path, class: "btn btn-success btn-index-create float-right", role: "button" %>
+                  <% end %>
                 </div>
               </div>
             </div>

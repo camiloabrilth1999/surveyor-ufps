@@ -52,18 +52,13 @@
                         <td><%= @user.contact_number %></td>
                       </tr>
 
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">Telefono</td>
-                        <td><%= @user.contact_number %></td>
-                      </tr>
-
                       <% if @user.academic_program != nil %>
-                      <tr role="row" class="even">
+                      <tr role="row" class="odd">
                         <td class="sorting_1">Programa academico</td>
                         <td><%= @user.academic_program.name %></td>
                       </tr>
 
-                      <tr role="row" class="odd">
+                      <tr role="row" class="even">
                         <td class="sorting_1">Facultad</td>
                         <td><%= @user.academic_program.faculty.name %></td>
                       </tr>

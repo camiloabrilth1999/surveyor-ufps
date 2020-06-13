@@ -12,4 +12,20 @@ module ApplicationHelper
       )
     end
   end
+
+  def is_active_path?(path, section = nil)
+    true if current_page?(path)
+  end
+
+  def active_path(path, section = nil)
+    "active-li" if is_active_path?(path)
+  end
+
+  def active_section(path = [])
+    path.each do |min_path|
+      return "menu-open" if is_active_path?(min_path)
+    end
+    return ""
+  end
+
 end

@@ -21,7 +21,6 @@ class Student < ApplicationRecord
       begin
         student.save
       rescue StandardError => e
-        binding.pry
         puts "Error: #{e.inspect}"
         next
       end
