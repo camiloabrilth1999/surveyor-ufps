@@ -34,6 +34,7 @@ gem "rolify"
 gem "roo", "~> 2.8.0"
 gem "iconv"
 gem 'dotenv-rails'
+gem "rename"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
