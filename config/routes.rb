@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         collection { get '/:semesters', to: 'students#index_semester', as: "index_semester_other"}
         collection { post :index_semester_post }
       end
+      get 'formula', to: 'sampling_formula#index', as: "sampling_formula"
     end
   end
 end

@@ -13,6 +13,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    academics_programs_ocuped = []
+    User.joins(:academic_program).each do |user|
+      academics_programs_ocuped.push(user.academic_program.id)
+    end
+    @academic_programs = AcademicProgram.where.not(id: academics_programs_ocuped)
     authorize @user
   end
 

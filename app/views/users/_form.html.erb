@@ -43,7 +43,7 @@
     <% if (current_user.has_role? :director_de_comite) && (user.uuid? ? (user.has_role? :director_de_programa) : true)%>
     <div class="form-group">
       <%= form.label :academic_program_id, "Programa academico" %>
-      <%= form.select(:academic_program_id, AcademicProgram.all.collect { |a| [a.name, a.id ] }, {}, { id: "user_academic_program_id", class: "form-control" }) %>
+      <%= form.select(:academic_program_id, academic_programs.collect { |a| [a.name, a.id ] }, {}, { id: "user_academic_program_id", class: "form-control" }) %>
     </div>
     <% end %>
 

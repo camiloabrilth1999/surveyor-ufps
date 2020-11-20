@@ -28,8 +28,10 @@
                       <h6 class="card_text_white">Formula de muestreo</h6>
                     </div>
                     <div class="card-footer text-muted card-footer-custom">
-                      <a href="#" class="card_text_white">Acceder</a>
-                      <i class="fas fa-arrow-circle-right card_text_white"></i>
+                      <%= link_to(self_evaluations_sampling_instruments_sampling_formula_path, class: "card_text_white") do %>
+                        Acceder
+                        <i class="fas fa-arrow-circle-right card_text_white"></i>
+                      <% end %>
                     </div>
                   </div>
                 </div>
