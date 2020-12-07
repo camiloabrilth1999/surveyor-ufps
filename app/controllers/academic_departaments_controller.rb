@@ -6,16 +6,19 @@ class AcademicDepartamentsController < ApplicationController
   # GET /academic_departaments.json
   def index
     @academic_departaments = AcademicDepartament.all
+    authorize @academic_departaments
   end
 
   # GET /academic_departaments/1
   # GET /academic_departaments/1.json
   def show
+    authorize @academic_departament
   end
 
   # GET /academic_departaments/new
   def new
     @academic_departament = AcademicDepartament.new
+    authorize @academic_departament
   end
 
   # GET /academic_departaments/1/edit
@@ -26,6 +29,7 @@ class AcademicDepartamentsController < ApplicationController
   # POST /academic_departaments.json
   def create
     @academic_departament = AcademicDepartament.new(academic_departament_params)
+    authorize @academic_departament
 
     respond_to do |format|
       if @academic_departament.save
@@ -42,6 +46,7 @@ class AcademicDepartamentsController < ApplicationController
   # PATCH/PUT /academic_departaments/1.json
   def update
     respond_to do |format|
+      authorize @academic_departament
       if @academic_departament.update(academic_departament_params)
         format.html { redirect_to @academic_departament, notice: 'Se ha actualizado el departamento academico correctamente.' }
         format.json { render :show, status: :ok, location: @academic_departament }
@@ -55,6 +60,7 @@ class AcademicDepartamentsController < ApplicationController
   # DELETE /academic_departaments/1
   # DELETE /academic_departaments/1.json
   def destroy
+    authorize @academic_departament
     @academic_departament.destroy
     respond_to do |format|
       format.html { redirect_to academic_departaments_url, notice: 'Se ha eliminado el departamento academico correctamente.' }
@@ -70,6 +76,6 @@ class AcademicDepartamentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def academic_departament_params
-      params.require(:academic_departament).permit(:name, :code)
+      params.require(:academic_departament).permit(:name, :code, :faculty_id)
     end
 end

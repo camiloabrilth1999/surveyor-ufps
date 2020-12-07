@@ -1,122 +1,129 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
+  <!-- Brand Logo -->
 
   <%= link_to(authenticated_root_path, class: "brand-link") do %>
-    <span class="brand-text font-weight-light">AutoevaSoft</span>
+  <span class="brand-text font-weight-light">AutoevaSoft</span>
   <% end %>
-<!-- Sidebar -->
-  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 652px;"><div class="sidebar" style="min-height: 652px; overflow: hidden; width: auto; height: 652px;">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="http://placehold.it/160x160" class="img-circle elevation-2" alt="User Image">
+  <!-- Sidebar -->
+  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 652px;">
+    <div class="sidebar" style="min-height: 652px; overflow: hidden; width: auto; height: 652px;">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="http://placehold.it/160x160" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <%= link_to(current_user.name, users_profile_path, class: "d-block")%>
+        </div>
       </div>
-      <div class="info">
-        <%= link_to(current_user.name, users_profile_path, class: "d-block")%>
-      </div>
-    </div>
-<!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item has-treeview <%=active_section([users_profile_path, edit_user_path(current_user)])%>">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-user-friends"></i>
-            <p>
-              Informacion personal
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item <%=active_path(users_profile_path)%>">
-              <%= link_to(users_profile_path, class: "nav-link") do %>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview <%=active_section([users_profile_path, edit_user_path(current_user)])%>">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-friends"></i>
+              <p>
+                Informacion personal
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item <%=active_path(users_profile_path)%>">
+                <%= link_to(users_profile_path, class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Datos personales</p>
-              <% end %>
-            </li>
-            <li class="nav-item <%=active_path(edit_user_path(current_user)) %>">
-              <%= link_to(edit_user_path(current_user), class: "nav-link") do %>
+                <% end %>
+              </li>
+              <li class="nav-item <%=active_path(edit_user_path(current_user)) %>">
+                <%= link_to(edit_user_path(current_user), class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Editar datos personales</p>
-              <% end %>
-            </li>
-          </ul>
-        </li>
-        <% if current_user.has_role? :director_de_comite%>
-        <li class="nav-item has-treeview <%=active_section([faculties_path, academic_programs_path])%>">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-building"></i>
-            <p>
-              Infraestructura fisica
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item <%=active_path(faculties_path) %>">
-              <%= link_to(faculties_path, class: "nav-link") do %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <% if current_user.has_role? :director_de_comite%>
+          <li class="nav-item has-treeview <%=active_section([faculties_path, academic_programs_path, academic_departaments_path])%>">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Infraestructura fisica
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item <%=active_path(faculties_path) %>">
+                <%= link_to(faculties_path, class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Facultades</p>
-              <% end %>
-            </li>
-            <li class="nav-item <%=active_path(academic_programs_path) %>">
-              <%= link_to(academic_programs_path, class: "nav-link") do %>
+                <% end %>
+              </li>
+              <li class="nav-item <%=active_path(academic_programs_path) %>">
+                <%= link_to(academic_programs_path, class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Programas academicos</p>
-              <% end %>
-            </li>
-          </ul>
-        </li>
+                <% end %>
+              </li>
+              <li class="nav-item <%=active_path(academic_departaments_path) %>">
+                <%= link_to(academic_departaments_path, class: "nav-link") do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Departamentos</p>
+                <% end %>
+              </li>
+            </ul>
+          </li>
 
-        <li class="nav-item has-treeview <%=active_section([users_path])%>">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-people-carry"></i>
-            <p>
-              Recurso humano
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item <%=active_path(users_path) %>">
-              <%= link_to(users_path, class: "nav-link") do %>
+          <li class="nav-item has-treeview <%=active_section([users_path])%>">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-people-carry"></i>
+              <p>
+                Recurso humano
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item <%=active_path(users_path) %>">
+                <%= link_to(users_path, class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Directores de programa</p>
-              <% end %>
-            </li>
-          </ul>
-        </li>
-        <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <% end %>
 
-        <li class="nav-item has-treeview <%=active_section([self_evaluations_sampling_instruments_path, import_self_evaluations_sampling_instruments_students_path,
+          <li class="nav-item has-treeview <%=active_section([self_evaluations_sampling_instruments_path, import_self_evaluations_sampling_instruments_students_path,
         index_semester_post_self_evaluations_sampling_instruments_students_path,
         self_evaluations_sampling_instruments_students_path])%>">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-chart-line"></i>
-            <p>
-              Autoevaluacion
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <% if current_user.has_role? :director_de_comite%>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Encuestas</p>
-              </a>
-            </li>
-            <% end %>
-            <% if current_user.has_role? :director_de_programa%>
-            <li class="nav-item <%=active_path(self_evaluations_sampling_instruments_path) %>">
-              <%= link_to(self_evaluations_sampling_instruments_path, class: "nav-link") do %>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>
+                Autoevaluacion
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <% if current_user.has_role? :director_de_comite%>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Encuestas</p>
+                </a>
+              </li>
+              <% end %>
+              <% if current_user.has_role? :director_de_programa%>
+              <li class="nav-item <%=active_path(self_evaluations_sampling_instruments_path) %>">
+                <%= link_to(self_evaluations_sampling_instruments_path, class: "nav-link") do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Muestreo de instrumentos</p>
+                <% end %>
+              </li>
               <% end %>
-            </li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-  </div>
-  <!-- /.sidebar -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
 </aside>

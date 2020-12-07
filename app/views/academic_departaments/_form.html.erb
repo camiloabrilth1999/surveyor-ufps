@@ -1,19 +1,29 @@
-<%= form_with(model: academic_departament, local: true) do |form| %>
-  <% if academic_departament.errors.any? %>
-    <%= render 'shared/error_messages', resource: academic_departament%>
+<div class="card-text">
+  <%= form_with(model: academic_departament, local: true) do |form| %>
+    <% if academic_departament.errors.any? %>
+      <%= render 'shared/error_messages', resource: academic_departament%>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :faculty_id, "Facultad" %>
+      <%= form.select(:faculty_id, Faculty.all.collect { |f| [f.name, f.id ] }, {}, { id: "academic_departament_faculty_id", class: "form-control" }) %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :name, "Nombre" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :code, "Codigo" %>
+      <%= form.text_field :code, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= link_to(request.referrer, class: "btn btn-custom-2 float-right") do %>
+        Volver atras
+      <% end %>
+      <%= form.submit "Enviar formulario", class: "btn btn-success btn-index-create float-right mr-2" %>
+    </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :code %>
-    <%= form.text_field :code %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,27 +1,79 @@
-<h1>Academic Departaments</h1>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Departamentos academicos</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Listado de los departamentos academicos en la UFPS</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <% if !@academic_departaments.count.zero? %>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Codigo</th>
+                          <th>Facultad</th>
+                          <th colspan="3">Opciones</th>
+                        </tr>
+                      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @academic_departaments.each do |academic_departament| %>
-      <tr>
-        <td><%= academic_departament.name %></td>
-        <td><%= academic_departament.code %></td>
-        <td><%= link_to 'Show', academic_departament %></td>
-        <td><%= link_to 'Edit', edit_academic_departament_path(academic_departament) %></td>
-        <td><%= link_to 'Destroy', academic_departament, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Academic Departament', new_academic_departament_path %>
+                      <tbody>
+                        <% @academic_departaments.each do |academic_departament| %>
+                          <tr>
+                            <td><%= academic_departament.name %></td>
+                            <td><%= academic_departament.code %></td>
+                            <td><%= academic_departament.faculty.name %></td>
+                            <td>
+                              <%= link_to(academic_departament_path(academic_departament.id), class: "") do %>
+                              <i class="fas fa-eye"></i>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to(edit_academic_departament_path(academic_departament), class: "") do %>
+                              <i class="fas fa-edit"></i>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to(academic_departament_path(academic_departament.id), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "") do %>
+                                <i class="fas fa-trash-alt"></i>
+                              <% end %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                  </table>
+                  <%= link_to 'Crear nuevo programa academico', new_academic_departament_path, class: "btn btn-success btn-index-create float-right", role: "button" %>
+                  </div>
+                  <% else %>
+                  <h2>No existen departamentos academicos en estos momentos, por favor, introduce los datos del programa academico y añadelo</h2>
+                  <%= link_to 'Crear nuevo programa academico', new_academic_departament_path, class: "btn btn-success btn-index-create float-right", role: "button" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

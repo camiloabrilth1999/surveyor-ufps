@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_111402) do
+ActiveRecord::Schema.define(version: 2020_12_07_150202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,19 @@ ActiveRecord::Schema.define(version: 2020_06_03_111402) do
     t.bigint "academic_program_id"
     t.index ["academic_program_id"], name: "index_students_on_academic_program_id"
     t.index ["identification_type_id"], name: "index_students_on_identification_type_id"
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "code"
+    t.string "full_name"
+    t.string "document_number"
+    t.integer "type"
+    t.bigint "academic_departament_id"
+    t.bigint "academic_program_id"
+    t.bigint "identification_type_id"
+    t.index ["academic_departament_id"], name: "index_teachers_on_academic_departament_id"
+    t.index ["academic_program_id"], name: "index_teachers_on_academic_program_id"
+    t.index ["identification_type_id"], name: "index_teachers_on_identification_type_id"
   end
 
   create_table "users", force: :cascade do |t|
