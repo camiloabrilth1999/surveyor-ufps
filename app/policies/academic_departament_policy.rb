@@ -1,9 +1,9 @@
 class AcademicDepartamentPolicy < ApplicationPolicy
-  attr_reader :user, :academic_program
+  attr_reader :user, :academic_departament
 
-  def initialize(user, academic_program)
+  def initialize(user, academic_departament)
     @user = user
-    @academic_program = academic_program
+    @academic_departament = academic_departament
   end
 
   def index?
