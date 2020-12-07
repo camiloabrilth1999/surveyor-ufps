@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <%= form.label :faculty_id, "Facultad" %>
-      <%= form.select(:faculty_id, Faculty.all.collect { |f| [f.name, f.id ] }, {}, { id: "user_faculty_id", class: "form-control" }) %>
+      <%= form.select(:faculty_id, Faculty.all.collect { |f| [f.name, f.id ] }, {}, { id: "academic_program_faculty_id", class: "form-control" }) %>
     </div>
 
     <div class="form-group">
